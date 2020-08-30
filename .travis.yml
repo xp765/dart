@@ -49,7 +49,7 @@ install:
     fi
 
 script:
-  - if [ -n "$DOCKERFILE" ]; then
+  - if [ -n "$DOCKER_NAME" ]; then
       docker run \
           -v $TRAVIS_BUILD_DIR:$TRAVIS_BUILD_DIR \
           --env-file .ci/docker/env.list \
