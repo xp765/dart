@@ -19,18 +19,20 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
-    - name: Install Dependencies
+    - name: Pull Docker Container
+      run: docker pull dartsim/dart-ci-containers:v6.10-xenial
+    - name: Build
       env:
         COMPILER: gcc
         DOCKERFILE: Dockerfile.ubuntu-xenial
         BUILD_TYPE: Release
       run: |
-        docker build -t "${DOCKERFILE,,}" -f ".ci/docker/$DOCKERFILE" .;
-        docker run -itd -v $GITHUB_WORKSPACE:$GITHUB_WORKSPACE --env-file ./.ci/docker/env.list --name dart-docker "${DOCKERFILE,,}";
-        docker exec dart-docker /bin/sh -c "cd $GITHUB_WORKSPACE && ./.ci/install.sh";
-    - name: Build
-      run: |
         docker exec dart-docker /bin/sh -c "cd $GITHUB_WORKSPACE && ./.ci/script.sh";
+        docker run \
+          -v $GITHUB_WORKSPACE:$GITHUB_WORKSPACE \
+          --env-file ./.ci/docker/env.list \
+          dartsim/dart-ci-containers:v6.10-xenial /bin/sh \
+          -c "cd $GITHUB_WORKSPACE && ./.ci/script.sh"
 
   bionic_gcc_release:
     name: Ubuntu 18.04 [GCC|Release]
