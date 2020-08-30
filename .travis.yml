@@ -43,7 +43,7 @@ matrix:
 
 install:
   - if [ -n "$DOCKER_NAME" ]; then
-      docker pull $DOCKER_NAME
+      docker pull $DOCKER_NAME;
     else
       sudo -E .ci/install.sh;
     fi
