@@ -22,9 +22,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-xenial
         COMPILER: gcc
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-xenial
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -40,9 +40,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-bionic
         COMPILER: gcc
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-bionic
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -58,10 +58,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-bionic
         COMPILER: gcc
         BUILD_DARTPY: ON
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-bionic
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -77,9 +77,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-focal
         COMPILER: gcc
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-focal
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -95,10 +95,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-focal
         COMPILER: gcc
         BUILD_DARTPY: ON
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-focal
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -114,9 +114,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-groovy
         COMPILER: gcc
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-groovy
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -132,10 +132,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       env:
+        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-groovy
         COMPILER: gcc
         BUILD_DARTPY: ON
         BUILD_TYPE: Release
-        DOCKER_NAME: dartsim/dart-ci-containers:v6.10-groovy
       run: |
         docker pull $DOCKER_NAME
         docker run \
@@ -147,7 +147,7 @@ jobs:
     name: macOS 10.15 [Clang|Release]
     runs-on: macOS-10.15
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install Dependencies
       env:
         COMPILER: clang
@@ -162,7 +162,7 @@ jobs:
     name: macOS 10.15 [Clang|dartpy|Release]
     runs-on: macOS-10.15
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install Dependencies
       env:
         COMPILER: clang
@@ -185,7 +185,7 @@ jobs:
       VCPKG_ROOT: 'C:/dartsim/vcpkg'
       VCPKG_BUILD_TAG: v0.1.1
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install Dependencies
       shell: cmd
       run: |
