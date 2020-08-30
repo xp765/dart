@@ -27,7 +27,7 @@ matrix:
 
     - os: linux
       env:
-        - DOCKER_NAME=dartsim/dart-ci-containers:v6.10-xenial-32bit
+        - DOCKER_NAME="dartsim/dart-ci-containers:v6.10-xenial-32bit"
         - BUILD_NAME=XENIAL_32BIT_DEBUG_CODECOV
         - BUILD_TYPE=Release  # TODO: Tests fail in debug mode
         - COMPILER=gcc
@@ -35,7 +35,7 @@ matrix:
 
     - os: linux
       env:
-        - DOCKER_NAME=dartsim/dart-ci-containers:v6.10-bionic
+        - DOCKER_NAME="dartsim/dart-ci-containers:v6.10-bionic"
         - BUILD_DOCS=ON
         - BUILD_TYPE=Release
         - COMPILER=gcc
