@@ -6,6 +6,11 @@ if(pagmo_FOUND)
 else()
   set(HAVE_PAGMO FALSE CACHE BOOL "Check if pagmo found." FORCE)
 endif()
+# TODO: Support pagmo > 2.15.0 once a new release is out
+if(pagmo_VERSION VERSION_GREATER 2.15.0)
+  message(WARNING "pagmo2 ${pagmo_VERSION} (> 2.15.0) is not supported. See #1492 for details")
+  return()
+endif()
 
 find_package(Threads REQUIRED)
 dart_check_optional_package(Threads "dart-optimizer-pagmo" "Threads" "")
